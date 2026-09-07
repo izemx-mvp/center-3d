@@ -208,7 +208,28 @@ function Catalogue() {
               <span className="font-semibold text-graphite">{items.length}</span> machine
               {items.length > 1 ? "s" : ""} correspondant à votre recherche
             </p>
+            <label className="ml-auto flex items-center gap-2 text-sm text-muted-foreground">
+              <span className="hidden sm:inline">Trier par</span>
+              <select
+                value={search.tri ?? "pertinence"}
+                onChange={(e) => setFilter({ tri: e.target.value })}
+                className="h-10 rounded-xl border border-input bg-card px-3 text-sm text-graphite outline-none transition-colors focus:border-primary"
+              >
+                {SORTS.map((s) => (
+                  <option key={s.value} value={s.value}>
+                    {s.label}
+                  </option>
+                ))}
+              </select>
+            </label>
           </div>
+
+          {search.tri === "prix" && (
+            <p className="mb-6 rounded-xl bg-secondary/70 px-4 py-3 text-xs font-medium text-primary-deep">
+              Les tarifs restent réservés à l'espace client : les machines disponibles sont
+              affichées en premier, le classement par prix se fait après connexion.
+            </p>
+          )}
 
           {chips.length > 0 && (
             <div className="mb-6 flex flex-wrap items-center gap-2">
