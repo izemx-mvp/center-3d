@@ -1,15 +1,15 @@
 import { Link } from "@tanstack/react-router";
-import { LogIn, Menu, X } from "lucide-react";
+import { Home, Info, LogIn, Mail, Menu, Tractor, X } from "lucide-react";
 import { useState } from "react";
 import logo from "@/assets/center-3d-logo.png.asset.json";
 import { ESPACE_CLIENT_URL } from "@/lib/equipment";
 import { buttonClass } from "@/components/ui-kit";
 
 const links = [
-  { to: "/", label: "Accueil" },
-  { to: "/catalogue", label: "Catalogue" },
-  { to: "/a-propos", label: "À propos" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", label: "Accueil", icon: Home },
+  { to: "/catalogue", label: "Catalogue", icon: Tractor },
+  { to: "/a-propos", label: "À propos", icon: Info },
+  { to: "/contact", label: "Contact", icon: Mail },
 ];
 
 export function Navbar() {
