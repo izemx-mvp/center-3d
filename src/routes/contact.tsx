@@ -12,12 +12,12 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Contactez les équipes Center 3D pour un conseil sur l'achat ou la location de matériel agricole au Maroc. Réponses aux questions fréquentes incluses.",
+          "Contactez les équipes Center 3D pour un conseil sur l'achat de matériel agricole au Maroc. Réponses aux questions fréquentes incluses.",
       },
       { property: "og:title", content: "Contact — Center 3D" },
       {
         property: "og:description",
-        content: "Écrivez-nous pour un conseil sur l'achat ou la location de machines agricoles.",
+        content: "Écrivez-nous pour un conseil sur l'achat de machines agricoles.",
       },
     ],
   }),
@@ -30,8 +30,8 @@ const FAQ = [
     a: "Le matériel déjà positionné au Maroc est généralement livré sous quelques jours ouvrés. Pour un équipement importé sur commande, le délai dépend du constructeur et du transport ; il vous est confirmé précisément lors de la prise de commande.",
   },
   {
-    q: "Comment fonctionne la location de matériel ?",
-    a: "La location s'adresse aux besoins ponctuels ou saisonniers : moisson, semis, chantiers de fourrage. La durée est modulable et la machine est livrée révisée, avec un accompagnement à la mise en route. La modalité (achat, location, ou les deux) est indiquée sur chaque fiche machine.",
+    q: "Proposez-vous de la location de matériel ?",
+    a: "Non. Center 3D est exclusivement un vendeur de matériel agricole neuf importé de constructeurs internationaux. Nos équipes vous accompagnent dans le choix et l'achat de la machine adaptée à votre exploitation.",
   },
   {
     q: "Quelles zones sont couvertes ?",
@@ -99,7 +99,7 @@ function Contact() {
                   <label className="mb-1.5 block text-sm font-medium text-graphite">Sujet</label>
                   <select className="h-11 w-full rounded-xl border border-input bg-background px-3.5 text-sm text-graphite outline-none transition-colors focus:border-primary">
                     <option>Demande d'information sur une machine</option>
-                    <option>Demande de location</option>
+                    
                     <option>Demande d'achat</option>
                     <option>Service après-vente</option>
                     <option>Création d'un accès espace client</option>
