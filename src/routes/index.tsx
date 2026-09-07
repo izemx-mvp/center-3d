@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
-  Building2,
+  ClipboardCheck,
   Globe2,
   Handshake,
   LogIn,
-  MapPin,
+  PackageCheck,
+  Search,
   ShieldCheck,
   Sprout,
   Truck,
@@ -15,10 +16,14 @@ import {
   CATEGORIES,
   EQUIPMENTS,
   ESPACE_CLIENT_URL,
+  equipmentImage,
   heroImage,
 } from "@/lib/equipment";
 import { EquipmentCard } from "@/components/EquipmentCard";
-import { buttonClass, CountUp, Reveal, SectionTitle } from "@/components/ui-kit";
+import { Glows } from "@/components/Glows";
+import { PresenceGrid } from "@/components/PresenceGrid";
+import { AvailabilityBadge, buttonClass, CountUp, Reveal, SectionTitle } from "@/components/ui-kit";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -46,34 +51,58 @@ const trust = [
   {
     icon: ShieldCheck,
     title: "Matériel de qualité importé",
-    text: "Des machines sélectionnées chez des constructeurs internationaux, contrôlées avant mise à disposition.",
+    text: "Chaque machine provient de constructeurs internationaux référencés par notre siège de Londres. Avant mise à disposition, elle passe un contrôle de réception : conformité des organes hydrauliques, essais moteur et vérification de la documentation technique en français.",
   },
   {
     icon: Globe2,
     title: "Présence internationale",
-    text: "Un siège à Londres et des équipes opérationnelles à Rabat, Tanger, Fès et Agadir.",
+    text: "Un siège britannique pour le sourcing et l'importation, quatre bureaux marocains à Rabat, Tanger, Fès et Agadir, et du matériel positionné dans neuf villes du Royaume pour réduire les délais.",
   },
   {
     icon: Wrench,
     title: "Service après-vente",
-    text: "Mise en route, entretien et suivi des pièces d'usure assurés par nos techniciens.",
+    text: "Mise en route sur votre parcelle, formation des opérateurs, entretien programmé et suivi des pièces d'usure les plus demandées, gérés par nos techniciens marocains.",
   },
   {
     icon: Handshake,
     title: "Conseil à l'achat",
-    text: "Un accompagnement complet pour choisir la machine adaptée à votre exploitation et à vos campagnes.",
+    text: "Nos conseillers analysent votre assolement, vos surfaces et vos fenêtres de chantier avant de recommander une machine, quitte à orienter vers un modèle moins cher s'il suffit.",
   },
   {
     icon: Sprout,
-    title: "Accompagnement technique",
-    text: "Un conseil adapté à votre exploitation : puissance, largeur de travail, conditions de sol.",
+    title: "Adapté aux conditions marocaines",
+    text: "Filtration renforcée, refroidissement adapté aux fortes chaleurs, pneumatiques et lestage choisis pour les sols argileux comme pour les terres sableuses du Souss.",
   },
   {
     icon: Truck,
     title: "Logistique maîtrisée",
-    text: "Importation, transport et livraison coordonnés jusqu'à votre exploitation.",
+    text: "Importation, dédouanement, transport porte-engins et livraison sur site sont coordonnés par une seule équipe, avec un interlocuteur unique jusqu'à la réception.",
   },
 ];
+
+const process = [
+  {
+    icon: Search,
+    title: "1. Explorez le catalogue public",
+    text: "Parcourez librement les fiches machines : caractéristiques, puissance, ville de positionnement et disponibilité, sans création de compte.",
+  },
+  {
+    icon: Handshake,
+    title: "2. Échangez avec un conseiller",
+    text: "Envoyez votre demande depuis la fiche ou la page contact. Un conseiller régional valide l'adéquation de la machine avec votre exploitation.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "3. Recevez votre devis dans l'espace client",
+    text: "Tarifs, options, délais et conditions de paiement sont regroupés dans votre espace client, où vous validez la commande en ligne.",
+  },
+  {
+    icon: PackageCheck,
+    title: "4. Livraison et mise en route",
+    text: "Nous organisons le transport jusqu'à votre exploitation, la mise en route et la formation des opérateurs, puis le suivi après-vente.",
+  },
+];
+
 
 function Home() {
   return (
@@ -209,8 +238,9 @@ function Home() {
       </section>
 
       {/* FEATURED */}
-      <section className="bg-secondary/50 py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <section className="relative isolate overflow-hidden bg-secondary/50 py-20 lg:py-24">
+        <Glows />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
           <Reveal>
             <div className="flex flex-wrap items-end justify-between gap-6">
               <SectionTitle
@@ -224,9 +254,57 @@ function Home() {
             </div>
           </Reveal>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((item, i) => (
-              <Reveal key={item.id} delay={i * 70}>
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {featured[0] && (
+              <Reveal className="lg:col-span-2">
+                <Link
+                  to="/catalogue/$id"
+                  params={{ id: featured[0].id }}
+                  className="group relative block h-full min-h-[22rem] overflow-hidden rounded-3xl border border-border shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]"
+                >
+                  <img
+                    src={equipmentImage(featured[0])}
+                    alt={`${featured[0].brand} ${featured[0].name}`}
+                    loading="lazy"
+                    width={1024}
+                    height={768}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-graphite via-graphite/55 to-transparent" />
+                  <div className="relative flex h-full flex-col justify-end p-7 sm:p-9">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="rounded-full bg-gold px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-graphite">
+                        Coup de projecteur
+                      </span>
+                      <AvailabilityBadge
+                        status={featured[0].availability}
+                        className="bg-background/90 backdrop-blur"
+                      />
+                    </div>
+                    <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+                      {featured[0].brand}
+                    </p>
+                    <h3 className="mt-1 text-3xl font-bold text-background sm:text-4xl">
+                      {featured[0].name}
+                    </h3>
+                    <p className="mt-3 max-w-xl text-sm leading-relaxed text-background/75">
+                      {featured[0].summary}
+                    </p>
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-gold">
+                      Voir la machine
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
+            )}
+            {featured.slice(1, 3).map((item, i) => (
+              <Reveal key={item.id} delay={(i + 1) * 70}>
+                <EquipmentCard item={item} />
+              </Reveal>
+            ))}
+            {featured.slice(3).map((item, i) => (
+              <Reveal key={item.id} delay={(i + 3) * 70}>
                 <EquipmentCard item={item} />
               </Reveal>
             ))}
@@ -234,69 +312,114 @@ function Home() {
         </div>
       </section>
 
+      {/* PHOTO BREAK */}
+      <section className="relative isolate overflow-hidden">
+        <img
+          src={heroImage}
+          alt="Machines agricoles Center 3D en conditions réelles"
+          loading="lazy"
+          width={1920}
+          height={1088}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-graphite via-graphite/75 to-graphite/25" />
+        <div className="grid-texture absolute inset-0 opacity-40" />
+        <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6">
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">
+              Du champ au chantier
+            </p>
+            <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight text-background sm:text-4xl">
+              Des machines choisies pour tenir la cadence des campagnes marocaines
+            </h2>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-background/75">
+              Préparation du sol, semis, protection des cultures, irrigation, récolte et fourrage :
+              notre catalogue couvre le cycle cultural complet, avec un matériel éprouvé sous
+              fortes chaleurs et sur sols exigeants.
+            </p>
+            <Link to="/catalogue" className={buttonClass("gold", "lg", "mt-8")}>
+              Parcourir les machines <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
       {/* TRUST */}
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-24">
-        <Reveal>
-          <SectionTitle
-            eyebrow="Pourquoi Center 3D"
-            title="Un partenaire d'équipement, pas un simple revendeur"
-            align="center"
-          />
-        </Reveal>
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {trust.map((t, i) => (
-            <Reveal key={t.title} delay={i * 60}>
-              <div className="surface-card h-full rounded-2xl p-6">
-                <div className="grid h-11 w-11 place-items-center rounded-xl bg-secondary text-primary-deep">
-                  <t.icon className="h-5 w-5" />
+      <section className="relative isolate overflow-hidden px-4 py-20 sm:px-6 lg:py-24">
+        <Glows />
+        <div className="relative mx-auto max-w-7xl">
+          <Reveal>
+            <SectionTitle
+              eyebrow="Pourquoi Center 3D"
+              title="Un partenaire d'équipement, pas un simple revendeur"
+              subtitle="Nous ne nous arrêtons pas à la vente : sélection chez le constructeur, importation, réception technique, mise en route et suivi des pièces font partie du même engagement."
+              align="center"
+            />
+          </Reveal>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {trust.map((t, i) => (
+              <Reveal key={t.title} delay={i * 60}>
+                <div className="surface-card group h-full rounded-2xl p-6">
+                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-secondary text-primary-deep transition-all duration-300 group-hover:bg-primary-deep group-hover:text-primary-foreground">
+                    <t.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-5 text-lg font-bold text-graphite">{t.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.text}</p>
                 </div>
-                <h3 className="mt-5 text-lg font-bold text-graphite">{t.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.text}</p>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section className="border-y border-border bg-secondary/40 py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <Reveal>
+            <SectionTitle
+              eyebrow="Comment ça marche"
+              title="Du catalogue public à la machine livrée, en quatre étapes"
+              subtitle="Le catalogue est ouvert à tous ; les tarifs et la commande passent par l'espace client. Voici le parcours complet."
+              align="center"
+            />
+          </Reveal>
+          <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {process.map((p, i) => (
+              <Reveal key={p.title} delay={i * 80}>
+                <li className="surface-card relative h-full list-none rounded-2xl bg-card p-6">
+                  <span className="absolute right-5 top-4 font-display text-4xl font-bold text-primary/10">
+                    0{i + 1}
+                  </span>
+                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary-deep text-primary-foreground">
+                    <p.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-5 text-base font-bold text-graphite">{p.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.text}</p>
+                </li>
+              </Reveal>
+            ))}
+          </ol>
         </div>
       </section>
 
       {/* INTERNATIONAL STRIP */}
-      <section className="bg-graphite py-20 lg:py-24">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
+      <section className="relative isolate overflow-hidden bg-graphite py-20 lg:py-24">
+        <Glows tone="dark" />
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
           <Reveal>
             <SectionTitle
               tone="dark"
               eyebrow="Présence internationale"
               title="Un siège britannique, des équipes marocaines"
-              subtitle="Center 3D pilote depuis Londres ses relations avec les constructeurs et sa logistique d'importation, tandis que ses équipes marocaines assurent la proximité terrain, la démonstration et le suivi technique."
+              subtitle="Center 3D pilote depuis Londres ses relations avec les constructeurs et sa logistique d'importation, tandis que ses bureaux régionaux marocains assurent la proximité terrain, la démonstration et le suivi technique."
             />
           </Reveal>
           <Reveal delay={120}>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-gold/30 bg-gold/10 p-6">
-                <Building2 className="h-6 w-6 text-gold" />
-                <p className="mt-4 text-sm font-semibold uppercase tracking-wider text-gold">
-                  Siège
-                </p>
-                <p className="mt-1 text-xl font-bold text-background">Londres, Royaume-Uni</p>
-                <p className="mt-2 text-sm text-background/65">
-                  Sourcing constructeurs, importation et coordination groupe.
-                </p>
-              </div>
-              {["Rabat", "Tanger", "Fès", "Agadir"].map((v) => (
-                <div
-                  key={v}
-                  className="flex items-center gap-3 rounded-2xl border border-background/12 bg-background/5 p-5"
-                >
-                  <MapPin className="h-5 w-5 shrink-0 text-primary-bright" />
-                  <div className="min-w-0">
-                    <p className="truncate font-semibold text-background">{v}</p>
-                    <p className="text-xs text-background/60">Équipe commerciale & technique</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <PresenceGrid tone="dark" />
           </Reveal>
         </div>
       </section>
+
 
       {/* CTA BAND */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">

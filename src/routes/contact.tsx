@@ -43,9 +43,26 @@ const FAQ = [
   },
   {
     q: "Center 3D est-elle une société internationale ?",
-    a: "Oui. Le siège de Center 3D est situé à Londres, au Royaume-Uni, et pilote les relations avec les constructeurs et la logistique d'importation. Les équipes marocaines assurent la présence terrain, la démonstration et le service après-vente.",
+    a: "Oui. Le siège de Center 3D est situé à Londres, au Royaume-Uni, et pilote les relations avec les constructeurs et la logistique d'importation. Les bureaux régionaux marocains de Rabat, Tanger, Fès et Agadir assurent la présence terrain, la démonstration et le service après-vente.",
+  },
+  {
+    q: "Pourquoi les prix ne sont-ils pas affichés sur le site public ?",
+    a: "Le prix d'une machine dépend de la configuration retenue, des options, du volume commandé et des conditions de livraison. Nous préférons vous transmettre un tarif juste et complet dans votre espace client plutôt qu'un montant indicatif trompeur.",
+  },
+  {
+    q: "Puis-je voir la machine avant de l'acheter ?",
+    a: "Oui. Selon la disponibilité et la ville de positionnement, nous organisons une visite du matériel ou une démonstration en conditions réelles avec l'un de nos techniciens régionaux.",
+  },
+  {
+    q: "Assurez-vous l'entretien et les pièces détachées ?",
+    a: "Nos techniciens réalisent la mise en route, la formation des opérateurs et les entretiens programmés. Les pièces d'usure les plus courantes sont approvisionnées via nos bureaux régionaux ; les pièces spécifiques sont commandées directement auprès du constructeur.",
+  },
+  {
+    q: "Travaillez-vous avec les coopératives et les entreprises de travaux agricoles ?",
+    a: "Oui. Nous accompagnons aussi bien les exploitations familiales que les coopératives et les entreprises de travaux agricoles, avec des configurations et des volumes adaptés à chaque usage.",
   },
 ];
+
 
 function Contact() {
   const [sent, setSent] = useState(false);
@@ -125,16 +142,29 @@ function Contact() {
 
         <Reveal delay={120}>
           <div className="space-y-4">
-            <div className="rounded-2xl bg-graphite p-7 text-background">
-              <h2 className="font-display text-lg font-bold">Nos coordonnées</h2>
-              <ul className="mt-5 space-y-4 text-sm text-background/75">
+            <div className="relative isolate overflow-hidden rounded-2xl bg-graphite p-7 text-background">
+              <div className="absolute -right-10 -top-10 h-40 w-40 animate-float-soft rounded-full bg-gold/15 blur-3xl" />
+              <h2 className="relative font-display text-lg font-bold">Nos coordonnées</h2>
+              <ul className="relative mt-5 space-y-4 text-sm text-background/75">
                 <li className="flex gap-3">
                   <Globe2 className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                  <span>Siège : Londres, Royaume-Uni — adresse complète communiquée sur demande</span>
+                  <span>
+                    <span className="inline-flex rounded-full bg-gold px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-graphite">
+                      Siège social
+                    </span>
+                    <br />
+                    Londres, Royaume-Uni — adresse complète communiquée sur demande
+                  </span>
                 </li>
                 <li className="flex gap-3">
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                  <span>Maroc : équipes à Rabat, Tanger, Fès et Agadir</span>
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary-bright" />
+                  <span>
+                    <span className="inline-flex rounded-full bg-background/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-background/80">
+                      Bureaux régionaux
+                    </span>
+                    <br />
+                    Rabat, Tanger, Fès et Agadir
+                  </span>
                 </li>
                 <li className="flex gap-3">
                   <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
@@ -146,6 +176,7 @@ function Contact() {
                 </li>
               </ul>
             </div>
+
             <div className="rounded-2xl border border-gold/35 bg-gold/10 p-7">
               <p className="font-display font-semibold text-graphite">Déjà client ?</p>
               <p className="mt-2 text-sm text-graphite-soft">
