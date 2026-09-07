@@ -13,10 +13,21 @@ import { EquipmentCard } from "@/components/EquipmentCard";
 import { Button, Reveal } from "@/components/ui-kit";
 import { cn } from "@/lib/utils";
 
+const SORTS = [
+  { value: "pertinence", label: "Pertinence" },
+  { value: "recent", label: "Les plus récentes" },
+  { value: "ancien", label: "Les plus anciennes" },
+  { value: "az", label: "Nom (A → Z)" },
+  { value: "prix", label: "Prix (espace client)" },
+] as const;
+
+type Sort = (typeof SORTS)[number]["value"];
+
 interface Search {
   categorie?: CategorySlug;
   ville?: string;
   dispo?: Availability;
+  tri?: Sort;
 }
 
 export const Route = createFileRoute("/catalogue/")({
@@ -28,6 +39,7 @@ export const Route = createFileRoute("/catalogue/")({
       out.ville = search["ville"] as string;
     if (AVAILABILITIES.includes(search["dispo"] as Availability))
       out.dispo = search["dispo"] as Availability;
+    if (SORTS.some((s) => s.value === search["tri"])) out.tri = search["tri"] as Sort;
     return out;
   },
   head: () => ({
