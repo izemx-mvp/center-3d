@@ -71,16 +71,26 @@ function Catalogue() {
       search: ((prev: Search) => ({ ...prev, ...patch })) as never,
     });
 
-  const items = useMemo(
-    () =>
-      EQUIPMENTS.filter(
-        (e) =>
-          (!search.categorie || e.category === search.categorie) &&
-          (!search.ville || e.city === search.ville) &&
-          (!search.dispo || e.availability === search.dispo),
-      ),
-    [search],
-  );
+  const items = useMemo(() => {
+    const list = EQUIPMENTS.filter(
+      (e) =>
+        (!search.categorie || e.category === search.categorie) &&
+        (!search.ville || e.city === search.ville) &&
+        (!search.dispo || e.availability === search.dispo),
+    );
+    const tri = search.tri ?? "pertinence";
+    if (tri === "recent") return [...list].sort((a, b) => b.year - a.year);
+    if (tri === "ancien") return [...list].sort((a, b) => a.year - b.year);
+    if (tri === "az")
+      return [...list].sort((a, b) =>
+        `${a.brand} ${a.name}`.localeCompare(`${b.brand} ${b.name}`, "fr"),
+      );
+    if (tri === "prix")
+      return [...list].sort(
+        (a, b) => Number(b.availability === "Disponible") - Number(a.availability === "Disponible"),
+      );
+    return list;
+  }, [search]);
 
   const chips = [
     search.categorie && {
