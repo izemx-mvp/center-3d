@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Building2, Mail, MapPin, Phone } from "lucide-react";
-import logo from "@/assets/center-3d-logo.png.asset.json";
+import logo from "@/assets/center-3d-logo.png";
 import { CATEGORIES, ESPACE_CLIENT_URL } from "@/lib/equipment";
 import { Glows } from "@/components/Glows";
 
@@ -36,7 +36,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-4">
         <div className="lg:col-span-1">
           <div className="inline-flex rounded-xl bg-background/95 px-4 py-3">
-            <img src={logo.url} alt="Center 3D" className="h-8 w-auto" />
+            <img src={logo} alt="Center 3D" className="h-8 w-auto" />
           </div>
           <p className="mt-5 max-w-xs text-sm leading-relaxed">
             Importateur et distributeur international de matériel agricole. Vente de

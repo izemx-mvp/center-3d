@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Home, Info, LogIn, Mail, Menu, Tractor, X } from "lucide-react";
 import { useState } from "react";
-import logo from "@/assets/center-3d-logo.png.asset.json";
+import logo from "@/assets/center-3d-logo.png";
 import { ESPACE_CLIENT_URL } from "@/lib/equipment";
 import { buttonClass } from "@/components/ui-kit";
 
@@ -19,7 +19,7 @@ export function Navbar() {
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-xl">
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link to="/" className="flex min-w-0 shrink-0 items-center" onClick={() => setOpen(false)}>
-          <img src={logo.url} alt="Center 3D" className="h-9 w-auto sm:h-10" />
+          <img src={logo} alt="Center 3D" className="h-9 w-auto sm:h-10" />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">

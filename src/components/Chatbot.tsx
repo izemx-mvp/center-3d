@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { MessageSquare, Send, X } from "lucide-react";
-import picto from "@/assets/center-3d-picto.png.asset.json";
+import picto from "@/assets/center-3d-picto.png";
 import { ESPACE_CLIENT_URL } from "@/lib/equipment";
 import { cn } from "@/lib/utils";
 
@@ -149,7 +149,7 @@ export function Chatbot() {
       {open && (
         <div className="animate-in fade-in slide-in-from-bottom-4 flex h-[520px] w-[min(92vw,384px)] flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-[0_30px_70px_-30px_oklch(0.28_0.012_255/0.6)] duration-300">
           <div className="flex items-center gap-3 bg-graphite px-4 py-3.5">
-            <img src={picto.url} alt="" className="h-8 w-8 rounded-lg bg-background/95 p-1" />
+            <img src={picto} alt="" className="h-8 w-8 rounded-lg bg-background/95 p-1" />
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold text-background">Assistant Center 3D</p>
               <p className="flex items-center gap-1.5 text-xs text-background/60">
