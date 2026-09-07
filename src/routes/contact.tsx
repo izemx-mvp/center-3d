@@ -142,16 +142,29 @@ function Contact() {
 
         <Reveal delay={120}>
           <div className="space-y-4">
-            <div className="rounded-2xl bg-graphite p-7 text-background">
-              <h2 className="font-display text-lg font-bold">Nos coordonnées</h2>
-              <ul className="mt-5 space-y-4 text-sm text-background/75">
+            <div className="relative isolate overflow-hidden rounded-2xl bg-graphite p-7 text-background">
+              <div className="absolute -right-10 -top-10 h-40 w-40 animate-float-soft rounded-full bg-gold/15 blur-3xl" />
+              <h2 className="relative font-display text-lg font-bold">Nos coordonnées</h2>
+              <ul className="relative mt-5 space-y-4 text-sm text-background/75">
                 <li className="flex gap-3">
                   <Globe2 className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                  <span>Siège : Londres, Royaume-Uni — adresse complète communiquée sur demande</span>
+                  <span>
+                    <span className="inline-flex rounded-full bg-gold px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-graphite">
+                      Siège social
+                    </span>
+                    <br />
+                    Londres, Royaume-Uni — adresse complète communiquée sur demande
+                  </span>
                 </li>
                 <li className="flex gap-3">
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-                  <span>Maroc : équipes à Rabat, Tanger, Fès et Agadir</span>
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary-bright" />
+                  <span>
+                    <span className="inline-flex rounded-full bg-background/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-background/80">
+                      Bureaux régionaux
+                    </span>
+                    <br />
+                    Rabat, Tanger, Fès et Agadir
+                  </span>
                 </li>
                 <li className="flex gap-3">
                   <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
@@ -163,6 +176,7 @@ function Contact() {
                 </li>
               </ul>
             </div>
+
             <div className="rounded-2xl border border-gold/35 bg-gold/10 p-7">
               <p className="font-display font-semibold text-graphite">Déjà client ?</p>
               <p className="mt-2 text-sm text-graphite-soft">

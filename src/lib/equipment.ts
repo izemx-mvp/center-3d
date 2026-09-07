@@ -32,45 +32,53 @@ export const CATEGORIES: Category[] = [
     slug: "tracteurs",
     label: "Tracteurs",
     image: tracteurs,
-    description: "Tracteurs polyvalents et haute puissance pour grandes cultures et maraîchage.",
+    description:
+      "Tracteurs polyvalents et haute puissance, de 90 à 260 ch, pour grandes cultures, maraîchage et travaux lourds. Cabines climatisées, transmissions continues et hydrauliques renforcées adaptées aux longues journées de chantier.",
   },
   {
     slug: "moissonneuses",
     label: "Moissonneuses",
     image: moissonneuses,
-    description: "Moissonneuses-batteuses à haut débit pour céréales et oléagineux.",
+    description:
+      "Moissonneuses-batteuses à haut débit pour céréales, légumineuses et oléagineux. Coupes larges, séparation renforcée et réglages assistés pour limiter les pertes en conditions sèches.",
   },
   {
     slug: "semoirs",
     label: "Semoirs",
     image: semoirs,
-    description: "Semoirs de précision pneumatiques et mécaniques, largeurs 4 à 9 mètres.",
+    description:
+      "Semoirs de précision pneumatiques et mécaniques de 4 à 9 mètres, avec contrôle de densité, coupure de rangs et trémies fertiliseur pour un semis régulier même en sol travaillé superficiellement.",
   },
   {
     slug: "pulverisateurs",
     label: "Pulvérisateurs",
     image: pulverisateurs,
-    description: "Pulvérisateurs portés et automoteurs, rampes larges et coupures de tronçons.",
+    description:
+      "Pulvérisateurs portés, traînés et automoteurs à rampes larges, avec coupure de tronçons, rinçage embarqué et buses anti-dérive pour un traitement précis et économe en intrants.",
   },
   {
     slug: "chargeuses",
     label: "Chargeuses",
     image: chargeuses,
-    description: "Chargeuses frontales et télescopiques pour exploitations et coopératives.",
+    description:
+      "Chargeuses frontales et télescopiques pour la manutention de fourrage, d'engrais et de palettes. Attaches rapides et large choix d'outils pour exploitations et coopératives.",
   },
   {
     slug: "presses-a-balles",
     label: "Presses à balles",
     image: presses,
-    description: "Presses rondes et cubiques pour paille, foin et fourrage.",
+    description:
+      "Presses rondes et cubiques pour paille, foin et fourrage, avec liage fiable et densité de balle réglable pour faciliter le stockage et le transport.",
   },
   {
     slug: "irrigation",
     label: "Irrigation",
     image: irrigation,
-    description: "Pivots, rampes frontales et systèmes d'irrigation économes en eau.",
+    description:
+      "Pivots, rampes frontales et enrouleurs conçus pour économiser l'eau : pilotage de la dose, buses basse pression et suivi des tours d'eau adaptés aux périmètres irrigués marocains.",
   },
 ];
+
 
 export const BRANDS = [
   "AgriMech",
