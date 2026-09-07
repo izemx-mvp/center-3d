@@ -143,7 +143,7 @@ export function Reveal({
     if (!el) return;
     const obs = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
+        if (entries[0]?.isIntersecting) {
           setVisible(true);
           obs.disconnect();
         }
@@ -222,7 +222,7 @@ export function CountUp({ value, suffix = "" }: { value: number; suffix?: string
     if (!el) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const obs = new IntersectionObserver((entries) => {
-      if (!entries[0].isIntersecting) return;
+      if (!entries[0]?.isIntersecting) return;
       obs.disconnect();
       if (reduce) return setN(value);
       const start = performance.now();

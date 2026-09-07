@@ -14,21 +14,21 @@ import { Button, Reveal } from "@/components/ui-kit";
 import { cn } from "@/lib/utils";
 
 interface Search {
-  categorie?: CategorySlug;
-  ville?: string;
-  dispo?: Availability;
+  categorie: CategorySlug | undefined;
+  ville: string | undefined;
+  dispo: Availability | undefined;
 }
 
 export const Route = createFileRoute("/catalogue/")({
   validateSearch: (search: Record<string, unknown>): Search => ({
-    categorie: CATEGORIES.some((c) => c.slug === search.categorie)
-      ? (search.categorie as CategorySlug)
+    categorie: CATEGORIES.some((c) => c.slug === search["categorie"])
+      ? (search["categorie"] as CategorySlug)
       : undefined,
-    ville: CITIES.includes(search.ville as (typeof CITIES)[number])
-      ? (search.ville as string)
+    ville: CITIES.includes(search["ville"] as (typeof CITIES)[number])
+      ? (search["ville"] as string)
       : undefined,
-    dispo: AVAILABILITIES.includes(search.dispo as Availability)
-      ? (search.dispo as Availability)
+    dispo: AVAILABILITIES.includes(search["dispo"] as Availability)
+      ? (search["dispo"] as Availability)
       : undefined,
   }),
   head: () => ({
@@ -51,11 +51,14 @@ export const Route = createFileRoute("/catalogue/")({
 
 function Catalogue() {
   const search = Route.useSearch();
-  const navigate = useNavigate({ from: "/catalogue" });
+  const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const setFilter = (patch: Partial<Search>) =>
-    navigate({ search: (prev: Search) => ({ ...prev, ...patch }) });
+    navigate({
+      to: "/catalogue",
+      search: ((prev: Search) => ({ ...prev, ...patch })) as never,
+    });
 
   const items = useMemo(
     () =>
@@ -199,7 +202,10 @@ function Catalogue() {
               ))}
               <button
                 onClick={() =>
-                  navigate({ search: { categorie: undefined, ville: undefined, dispo: undefined } })
+                  navigate({
+                    to: "/catalogue",
+                    search: { categorie: undefined, ville: undefined, dispo: undefined } as never,
+                  })
                 }
                 className="text-xs font-medium text-muted-foreground underline-offset-4 hover:underline"
               >
