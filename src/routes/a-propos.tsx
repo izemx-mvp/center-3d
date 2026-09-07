@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Building2, Globe2, Handshake, MapPin, ShieldCheck, Wrench } from "lucide-react";
+import { Globe2, Handshake, ShieldCheck, Wrench } from "lucide-react";
 import { BRANDS, heroImage } from "@/lib/equipment";
+import { Glows } from "@/components/Glows";
+import { PresenceGrid } from "@/components/PresenceGrid";
 import { buttonClass, Reveal, SectionTitle } from "@/components/ui-kit";
 
 export const Route = createFileRoute("/a-propos")({
@@ -27,24 +29,44 @@ const values = [
   {
     icon: ShieldCheck,
     title: "Qualité du matériel importé",
-    text: "Chaque machine provient de constructeurs internationaux reconnus et fait l'objet d'un contrôle avant mise à disposition.",
+    text: "Chaque machine provient de constructeurs internationaux reconnus et fait l'objet d'un contrôle de réception avant mise à disposition : essais moteur et hydrauliques, vérification des sécurités, contrôle des équipements et documentation technique complète.",
   },
   {
     icon: Globe2,
     title: "Présence internationale",
-    text: "Un siège à Londres pour le sourcing et l'importation, des équipes marocaines pour la proximité terrain.",
+    text: "Un siège à Londres pour le sourcing, la négociation constructeurs et l'importation ; quatre bureaux régionaux au Maroc pour la proximité terrain, la démonstration et la réactivité pendant les pics de campagne.",
   },
   {
     icon: Wrench,
     title: "Accompagnement technique",
-    text: "Conseil au choix de la machine, mise en route, formation des opérateurs et service après-vente.",
+    text: "Conseil au choix de la machine, mise en route sur votre parcelle, formation des opérateurs, entretiens programmés et disponibilité des pièces d'usure les plus courantes dans nos bureaux régionaux.",
   },
   {
     icon: Handshake,
     title: "Conseil à l'achat",
-    text: "Un accompagnement adapté à chaque exploitation pour un investissement durable et maîtrisé.",
+    text: "Nous partons de vos surfaces, de votre assolement et de vos fenêtres de chantier avant de recommander un modèle. Un investissement doit rester dimensionné à l'exploitation, pas l'inverse.",
   },
 ];
+
+const network = [
+  {
+    title: "Sélection chez le constructeur",
+    text: "Nos équipes de Londres évaluent chaque gamme sur la disponibilité des pièces, la simplicité d'entretien et la tenue en climat chaud avant de la référencer.",
+  },
+  {
+    title: "Importation et dédouanement",
+    text: "Nous pilotons le transport maritime, les formalités douanières et l'acheminement jusqu'aux plateformes marocaines, avec un suivi communiqué au client.",
+  },
+  {
+    title: "Réception technique au Maroc",
+    text: "Chaque machine est remise en configuration de travail, testée et documentée avant d'être proposée à la vente dans le catalogue.",
+  },
+  {
+    title: "Suivi après livraison",
+    text: "Mise en route, formation, entretien et approvisionnement en pièces sont assurés depuis Rabat, Tanger, Fès et Agadir.",
+  },
+];
+
 
 function About() {
   return (
