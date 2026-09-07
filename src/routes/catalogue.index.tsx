@@ -53,7 +53,7 @@ export const Route = createFileRoute("/catalogue/")({
       { property: "og:title", content: "Catalogue matériel agricole — Center 3D" },
       {
         property: "og:description",
-        content: "Parcourez nos machines agricoles disponibles à l'achat et à la location au Maroc.",
+        content: "Parcourez nos machines agricoles disponibles à la vente au Maroc.",
       },
     ],
   }),
