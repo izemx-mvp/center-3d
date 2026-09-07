@@ -114,7 +114,6 @@ export interface Equipment {
   weight: string;
   year: number;
   usage: string;
-  mode: "Achat" | "Location" | "Achat et location";
   summary: string;
   featured?: boolean;
 }
