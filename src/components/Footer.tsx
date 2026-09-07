@@ -111,12 +111,20 @@ export function Footer() {
           </h3>
           <ul className="space-y-3 text-sm">
             <li className="flex gap-3">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-              <span>Siège : Londres, Royaume-Uni — adresse complète à venir</span>
+              <Building2 className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+              <span>
+                <span className="font-semibold text-background">Siège — Londres, Royaume-Uni</span>
+                <br />
+                Adresse complète à venir
+              </span>
             </li>
             <li className="flex gap-3">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
-              <span>Maroc : Rabat · Tanger · Fès · Agadir</span>
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary-bright" />
+              <span>
+                <span className="font-semibold text-background">Bureaux régionaux — Maroc</span>
+                <br />
+                Rabat · Tanger · Fès · Agadir
+              </span>
             </li>
             <li className="flex gap-3">
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
@@ -130,12 +138,14 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-background/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-xs sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <p>© {new Date().getFullYear()} Center 3D. Tous droits réservés.</p>
-          <p>Les tarifs sont consultables uniquement dans l'espace client.</p>
+        <div className="border-t border-background/10">
+          <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-xs sm:flex-row sm:items-center sm:justify-between sm:px-6">
+            <p>© {new Date().getFullYear()} Center 3D. Tous droits réservés.</p>
+            <p>Les tarifs sont consultables uniquement dans l'espace client.</p>
+          </div>
         </div>
       </div>
     </footer>
   );
 }
+
