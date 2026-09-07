@@ -85,12 +85,13 @@ function Home() {
           alt="Tracteur agricole au travail dans un champ au coucher du soleil"
           width={1920}
           height={1088}
-          className="absolute inset-0 h-full w-full object-cover opacity-30"
+          className="absolute inset-0 h-full w-full object-cover opacity-55"
         />
         <div className="grid-texture absolute inset-0 opacity-60" />
         <div className="absolute -left-24 top-20 h-72 w-72 animate-float-soft rounded-full bg-primary-bright/20 blur-3xl" />
         <div className="absolute -right-10 bottom-0 h-80 w-80 animate-float-soft rounded-full bg-gold/15 blur-3xl [animation-delay:3s]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-graphite/70 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-graphite/90 via-graphite/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-graphite/80 via-transparent to-graphite/30" />
 
         <div className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:py-32">
           <Reveal>
