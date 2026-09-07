@@ -246,7 +246,12 @@ function Catalogue() {
                 onClick={() =>
                   navigate({
                     to: "/catalogue",
-                    search: { categorie: undefined, ville: undefined, dispo: undefined } as never,
+                    search: {
+                      categorie: undefined,
+                      ville: undefined,
+                      dispo: undefined,
+                      tri: search.tri,
+                    } as never,
                   })
                 }
                 className="text-xs font-medium text-muted-foreground underline-offset-4 hover:underline"
