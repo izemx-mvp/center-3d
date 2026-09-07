@@ -42,8 +42,6 @@ export function EquipmentCard({ item }: { item: Equipment }) {
             <dd className="font-medium text-graphite">{item.city}</dd>
           </div>
           <div className="flex justify-between gap-3">
-            <dt className="text-muted-foreground">Modalité</dt>
-            <dd className="font-medium text-graphite">{item.mode}</dd>
           </div>
         </dl>
 

@@ -12,7 +12,7 @@ export function Footer() {
             <img src={logo.url} alt="Center 3D" className="h-8 w-auto" />
           </div>
           <p className="mt-5 max-w-xs text-sm leading-relaxed">
-            Importateur et distributeur international de matériel agricole. Vente et location de
+            Importateur et distributeur international de matériel agricole. Vente de
             machines pour les exploitations et coopératives.
           </p>
           <a

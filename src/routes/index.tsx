@@ -23,17 +23,17 @@ import { buttonClass, CountUp, Reveal, SectionTitle } from "@/components/ui-kit"
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Center 3D — Importateur de matériel agricole (vente & location)" },
+      { title: "Center 3D — Importateur de matériel agricole" },
       {
         name: "description",
         content:
           "Importateur international de matériel agricole : tracteurs, moissonneuses, semoirs, pulvérisateurs, chargeuses, presses à balles et irrigation. Siège à Londres, équipes au Maroc.",
       },
-      { property: "og:title", content: "Center 3D — Matériel agricole importé, vente & location" },
+      { property: "og:title", content: "Center 3D — Matériel agricole importé" },
       {
         property: "og:description",
         content:
-          "Machines agricoles de constructeurs internationaux, disponibles à l'achat et à la location partout au Maroc.",
+          "Machines agricoles de constructeurs internationaux, disponibles à la vente partout au Maroc.",
       },
     ],
   }),
@@ -60,8 +60,8 @@ const trust = [
   },
   {
     icon: Handshake,
-    title: "Achat ou location",
-    text: "Une flexibilité totale selon vos campagnes : investissement durable ou location saisonnière.",
+    title: "Conseil à l'achat",
+    text: "Un accompagnement complet pour choisir la machine adaptée à votre exploitation et à vos campagnes.",
   },
   {
     icon: Sprout,
@@ -102,7 +102,7 @@ function Home() {
           <Reveal delay={90}>
             <h1 className="mt-6 max-w-3xl text-4xl font-bold leading-[1.08] text-background sm:text-5xl lg:text-6xl">
               Le matériel agricole importé,{" "}
-              <span className="text-gradient-gold">à l'achat comme à la location</span>
+              <span className="text-gradient-gold">disponible à la vente au Maroc</span>
             </h1>
           </Reveal>
           <Reveal delay={160}>
