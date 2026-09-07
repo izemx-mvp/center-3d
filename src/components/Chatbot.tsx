@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, Send, X } from "lucide-react";
+import { MessageSquare, Send, X } from "lucide-react";
 import picto from "@/assets/center-3d-picto.png.asset.json";
 import { ESPACE_CLIENT_URL } from "@/lib/equipment";
 import { cn } from "@/lib/utils";
@@ -7,7 +7,31 @@ import { cn } from "@/lib/utils";
 interface Msg {
   from: "bot" | "user";
   text: string;
+  quick?: string[] | undefined;
 }
+
+const QUICK = [
+  "Quelles catégories de matériel ?",
+  "Achat ou location ?",
+  "Comment voir les prix ?",
+  "Quels délais de livraison ?",
+];
+
+const WELCOME =
+  "Bonjour et bienvenue chez Center 3D ! 👋 Je suis votre assistant : je peux vous renseigner sur les catégories de matériel, la différence entre achat et location, l'accès à l'espace client, les délais de livraison et les zones couvertes. Que souhaitez-vous savoir ?";
+
+const FALLBACK =
+  "Je n'ai pas bien compris, mais voici ce que je peux vous aider à trouver :";
+
+const GREETINGS = [
+  "bonjour",
+  "salut",
+  "hello",
+  "hi",
+  "coucou",
+  "bonsoir",
+  "hey",
+];
 
 const RULES: { keys: string[]; answer: string }[] = [
   {
@@ -52,30 +76,55 @@ const RULES: { keys: string[]; answer: string }[] = [
   },
 ];
 
-const QUICK = [
-  "Quelles catégories de matériel ?",
-  "Achat ou location ?",
-  "Comment voir les prix ?",
-  "Quels délais de livraison ?",
-];
+function reply(input: string): { text: string; quick?: string[] } {
+  const q = input.toLowerCase().trim();
 
-function reply(input: string): string {
-  const q = input.toLowerCase();
+  if (GREETINGS.some((k) => q.includes(k))) {
+    return { text: WELCOME, quick: QUICK };
+  }
+
+  if (q.includes("merci") || q.includes("remercie")) {
+    return {
+      text: "Avec plaisir ! Je reste à votre disposition si vous avez d'autres questions sur notre matériel ou l'espace client.",
+    };
+  }
+
+  if (
+    q.includes("au revoir") ||
+    q.includes("revoir") ||
+    q.includes("bye") ||
+    q.includes("bonne journée") ||
+    q.includes("bonne soirée")
+  ) {
+    return {
+      text: "Au revoir et bonne journée ! N'hésitez pas à revenir si vous avez des questions.",
+    };
+  }
+
+  if (
+    q.includes("ça va") ||
+    q.includes("ca va") ||
+    q.includes("comment allez-vous") ||
+    q.includes("comment vas-tu") ||
+    q.includes("comment ça va")
+  ) {
+    return {
+      text: "Je vais bien, merci. Je suis prêt à vous aider sur nos machines ou l'accès à l'espace client. Que puis-je faire pour vous ?",
+      quick: QUICK,
+    };
+  }
+
   const hit = RULES.find((r) => r.keys.some((k) => q.includes(k)));
-  return (
-    hit?.answer ??
-    "Je n'ai pas la réponse à cette question. Le plus simple est de passer par notre page Contact : un conseiller Center 3D vous répondra rapidement avec les précisions techniques ou commerciales nécessaires."
-  );
+  if (hit) return { text: hit.answer };
+
+  return { text: FALLBACK, quick: QUICK };
 }
 
 export function Chatbot() {
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [msgs, setMsgs] = useState<Msg[]>([
-    {
-      from: "bot",
-      text: "Bonjour 👋 Je suis l'assistant Center 3D. Comment puis-je vous aider concernant notre matériel agricole ?",
-    },
+    { from: "bot", text: WELCOME, quick: QUICK },
   ]);
   const endRef = useRef<HTMLDivElement>(null);
 
@@ -88,7 +137,11 @@ export function Chatbot() {
     if (!t) return;
     setMsgs((m) => [...m, { from: "user", text: t }]);
     setInput("");
-    setTimeout(() => setMsgs((m) => [...m, { from: "bot", text: reply(t) }]), 350);
+    const answer = reply(t);
+    setTimeout(
+      () => setMsgs((m) => [...m, { from: "bot", text: answer.text, quick: answer.quick }]),
+      350,
+    );
   };
 
   return (
@@ -118,31 +171,38 @@ export function Chatbot() {
                 key={i}
                 className={cn("flex", m.from === "user" ? "justify-end" : "justify-start")}
               >
-                <p
+                <div
                   className={cn(
-                    "max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed",
-                    m.from === "user"
-                      ? "rounded-br-md bg-primary-deep text-primary-foreground"
-                      : "rounded-bl-md border border-border bg-card text-graphite",
+                    "flex max-w-[85%] flex-col gap-1.5",
+                    m.from === "user" ? "items-end" : "items-start",
                   )}
                 >
-                  {m.text}
-                </p>
+                  <p
+                    className={cn(
+                      "rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed",
+                      m.from === "user"
+                        ? "rounded-br-md bg-primary-deep text-primary-foreground"
+                        : "rounded-bl-md border border-border bg-card text-graphite",
+                    )}
+                  >
+                    {m.text}
+                  </p>
+                  {m.from === "bot" && m.quick && i === msgs.length - 1 && (
+                    <div className="flex flex-wrap gap-2">
+                      {m.quick.map((q) => (
+                        <button
+                          key={q}
+                          onClick={() => send(q)}
+                          className="rounded-full border border-primary/25 bg-secondary px-3 py-1.5 text-xs font-medium text-primary-deep transition-colors hover:bg-primary hover:text-primary-foreground"
+                        >
+                          {q}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
-            {msgs.length <= 1 && (
-              <div className="flex flex-wrap gap-2 pt-1">
-                {QUICK.map((q) => (
-                  <button
-                    key={q}
-                    onClick={() => send(q)}
-                    className="rounded-full border border-primary/25 bg-secondary px-3 py-1.5 text-xs font-medium text-primary-deep transition-colors hover:bg-primary hover:text-primary-foreground"
-                  >
-                    {q}
-                  </button>
-                ))}
-              </div>
-            )}
             <a
               href={ESPACE_CLIENT_URL}
               target="_blank"
@@ -180,10 +240,17 @@ export function Chatbot() {
 
       <button
         onClick={() => setOpen((v) => !v)}
-        aria-label="Ouvrir l'assistant"
-        className="grid h-14 w-14 place-items-center rounded-full bg-primary-deep text-primary-foreground shadow-[0_18px_38px_-16px_oklch(0.33_0.085_152/0.9)] transition-transform duration-200 hover:scale-105"
+        aria-label={open ? "Fermer l'assistant" : "Ouvrir l'assistant"}
+        className="flex h-14 items-center gap-2 rounded-full bg-primary-deep px-4 text-primary-foreground shadow-[0_18px_38px_-16px_oklch(0.33_0.085_152/0.9)] transition-transform duration-200 hover:scale-105"
       >
-        {open ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
+        {open ? (
+          <X className="h-6 w-6" />
+        ) : (
+          <>
+            <MessageSquare className="h-6 w-6" />
+            <span className="hidden text-sm font-semibold sm:inline-block">Besoin d'aide ?</span>
+          </>
+        )}
       </button>
     </div>
   );
