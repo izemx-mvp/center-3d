@@ -43,9 +43,26 @@ const FAQ = [
   },
   {
     q: "Center 3D est-elle une société internationale ?",
-    a: "Oui. Le siège de Center 3D est situé à Londres, au Royaume-Uni, et pilote les relations avec les constructeurs et la logistique d'importation. Les équipes marocaines assurent la présence terrain, la démonstration et le service après-vente.",
+    a: "Oui. Le siège de Center 3D est situé à Londres, au Royaume-Uni, et pilote les relations avec les constructeurs et la logistique d'importation. Les bureaux régionaux marocains de Rabat, Tanger, Fès et Agadir assurent la présence terrain, la démonstration et le service après-vente.",
+  },
+  {
+    q: "Pourquoi les prix ne sont-ils pas affichés sur le site public ?",
+    a: "Le prix d'une machine dépend de la configuration retenue, des options, du volume commandé et des conditions de livraison. Nous préférons vous transmettre un tarif juste et complet dans votre espace client plutôt qu'un montant indicatif trompeur.",
+  },
+  {
+    q: "Puis-je voir la machine avant de l'acheter ?",
+    a: "Oui. Selon la disponibilité et la ville de positionnement, nous organisons une visite du matériel ou une démonstration en conditions réelles avec l'un de nos techniciens régionaux.",
+  },
+  {
+    q: "Assurez-vous l'entretien et les pièces détachées ?",
+    a: "Nos techniciens réalisent la mise en route, la formation des opérateurs et les entretiens programmés. Les pièces d'usure les plus courantes sont approvisionnées via nos bureaux régionaux ; les pièces spécifiques sont commandées directement auprès du constructeur.",
+  },
+  {
+    q: "Travaillez-vous avec les coopératives et les entreprises de travaux agricoles ?",
+    a: "Oui. Nous accompagnons aussi bien les exploitations familiales que les coopératives et les entreprises de travaux agricoles, avec des configurations et des volumes adaptés à chaque usage.",
   },
 ];
+
 
 function Contact() {
   const [sent, setSent] = useState(false);

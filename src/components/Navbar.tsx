@@ -58,7 +58,7 @@ export function Navbar() {
       </div>
 
       {open && (
-        <div className="border-t border-border bg-background px-4 pb-5 pt-3 md:hidden">
+        <div className="animate-fade-in border-t border-border bg-background px-4 pb-5 pt-3 md:hidden">
           <nav className="flex flex-col gap-1">
             {links.map((l) => (
               <Link
@@ -67,12 +67,16 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 activeOptions={{ exact: l.to === "/" }}
                 activeProps={{ className: "text-primary-deep bg-secondary" }}
-                className="rounded-xl px-4 py-3 text-sm font-medium text-graphite-soft"
+                className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-graphite-soft transition-colors hover:bg-muted hover:text-primary-deep"
               >
+                <span className="grid h-8 w-8 place-items-center rounded-lg bg-secondary text-primary-deep">
+                  <l.icon className="h-4 w-4" />
+                </span>
                 {l.label}
               </Link>
             ))}
           </nav>
+
           <a
             href={ESPACE_CLIENT_URL}
             target="_blank"
