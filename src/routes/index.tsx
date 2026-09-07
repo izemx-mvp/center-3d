@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
-  Building2,
+  ClipboardCheck,
   Globe2,
   Handshake,
   LogIn,
-  MapPin,
+  PackageCheck,
+  Search,
   ShieldCheck,
   Sprout,
   Truck,
@@ -15,10 +16,14 @@ import {
   CATEGORIES,
   EQUIPMENTS,
   ESPACE_CLIENT_URL,
+  equipmentImage,
   heroImage,
 } from "@/lib/equipment";
 import { EquipmentCard } from "@/components/EquipmentCard";
-import { buttonClass, CountUp, Reveal, SectionTitle } from "@/components/ui-kit";
+import { Glows } from "@/components/Glows";
+import { PresenceGrid } from "@/components/PresenceGrid";
+import { AvailabilityBadge, buttonClass, CountUp, Reveal, SectionTitle } from "@/components/ui-kit";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -46,34 +51,58 @@ const trust = [
   {
     icon: ShieldCheck,
     title: "Matériel de qualité importé",
-    text: "Des machines sélectionnées chez des constructeurs internationaux, contrôlées avant mise à disposition.",
+    text: "Chaque machine provient de constructeurs internationaux référencés par notre siège de Londres. Avant mise à disposition, elle passe un contrôle de réception : conformité des organes hydrauliques, essais moteur et vérification de la documentation technique en français.",
   },
   {
     icon: Globe2,
     title: "Présence internationale",
-    text: "Un siège à Londres et des équipes opérationnelles à Rabat, Tanger, Fès et Agadir.",
+    text: "Un siège britannique pour le sourcing et l'importation, quatre bureaux marocains à Rabat, Tanger, Fès et Agadir, et du matériel positionné dans neuf villes du Royaume pour réduire les délais.",
   },
   {
     icon: Wrench,
     title: "Service après-vente",
-    text: "Mise en route, entretien et suivi des pièces d'usure assurés par nos techniciens.",
+    text: "Mise en route sur votre parcelle, formation des opérateurs, entretien programmé et suivi des pièces d'usure les plus demandées, gérés par nos techniciens marocains.",
   },
   {
     icon: Handshake,
     title: "Conseil à l'achat",
-    text: "Un accompagnement complet pour choisir la machine adaptée à votre exploitation et à vos campagnes.",
+    text: "Nos conseillers analysent votre assolement, vos surfaces et vos fenêtres de chantier avant de recommander une machine, quitte à orienter vers un modèle moins cher s'il suffit.",
   },
   {
     icon: Sprout,
-    title: "Accompagnement technique",
-    text: "Un conseil adapté à votre exploitation : puissance, largeur de travail, conditions de sol.",
+    title: "Adapté aux conditions marocaines",
+    text: "Filtration renforcée, refroidissement adapté aux fortes chaleurs, pneumatiques et lestage choisis pour les sols argileux comme pour les terres sableuses du Souss.",
   },
   {
     icon: Truck,
     title: "Logistique maîtrisée",
-    text: "Importation, transport et livraison coordonnés jusqu'à votre exploitation.",
+    text: "Importation, dédouanement, transport porte-engins et livraison sur site sont coordonnés par une seule équipe, avec un interlocuteur unique jusqu'à la réception.",
   },
 ];
+
+const process = [
+  {
+    icon: Search,
+    title: "1. Explorez le catalogue public",
+    text: "Parcourez librement les fiches machines : caractéristiques, puissance, ville de positionnement et disponibilité, sans création de compte.",
+  },
+  {
+    icon: Handshake,
+    title: "2. Échangez avec un conseiller",
+    text: "Envoyez votre demande depuis la fiche ou la page contact. Un conseiller régional valide l'adéquation de la machine avec votre exploitation.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "3. Recevez votre devis dans l'espace client",
+    text: "Tarifs, options, délais et conditions de paiement sont regroupés dans votre espace client, où vous validez la commande en ligne.",
+  },
+  {
+    icon: PackageCheck,
+    title: "4. Livraison et mise en route",
+    text: "Nous organisons le transport jusqu'à votre exploitation, la mise en route et la formation des opérateurs, puis le suivi après-vente.",
+  },
+];
+
 
 function Home() {
   return (
