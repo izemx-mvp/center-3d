@@ -123,6 +123,26 @@ const img = (c: CategorySlug) => CATEGORIES.find((x) => x.slug === c)!.image;
 export const categoryImage = img;
 export const categoryLabel = (c: CategorySlug) => CATEGORIES.find((x) => x.slug === c)!.label;
 
+const EQ_PHOTOS = import.meta.glob("../assets/eq/*.jpg", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
+
+/** All distinct photos of one machine, newest angle first. */
+export function equipmentGallery(item: { id: string; category: CategorySlug }): string[] {
+  const own = Object.keys(EQ_PHOTOS)
+    .filter((path) => path.includes(`/${item.id}-`))
+    .sort()
+    .map((path) => EQ_PHOTOS[path]!);
+  const shots = own.length > 0 ? own : [img(item.category)];
+  const extra = img(item.category);
+  return shots.includes(extra) ? shots : [...shots, extra];
+}
+
+export const equipmentImage = (item: { id: string; category: CategorySlug }) =>
+  equipmentGallery(item)[0]!;
+
 export const EQUIPMENTS: Equipment[] = [
   {
     id: "agrimech-x180-pro",

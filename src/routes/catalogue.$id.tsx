@@ -2,11 +2,10 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, CheckCircle2, Info, Lock, MapPin } from "lucide-react";
 import { useState } from "react";
 import {
-  categoryImage,
   categoryLabel,
+  equipmentGallery,
   EQUIPMENTS,
   ESPACE_CLIENT_URL,
-  heroImage,
 } from "@/lib/equipment";
 import { EquipmentCard } from "@/components/EquipmentCard";
 import { AvailabilityBadge, Button, buttonClass, Reveal } from "@/components/ui-kit";
