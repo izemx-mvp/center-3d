@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 interface Msg {
   from: "bot" | "user";
   text: string;
-  quick?: string[];
+  quick?: string[] | undefined;
 }
 
 const QUICK = [
