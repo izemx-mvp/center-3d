@@ -56,7 +56,7 @@ function Detail() {
     ["Poids", item.weight],
     ["Année", String(item.year)],
     ["Utilisation recommandée", item.usage],
-    ["Modalité", item.mode],
+    
     ["Localisation", item.city],
   ];
 
@@ -125,7 +125,7 @@ function Detail() {
               dans votre espace client
             </p>
             <p className="mt-2 text-sm text-graphite-soft">
-              Connectez-vous pour consulter le tarif d'achat ou de location, vérifier le stock et
+              Connectez-vous pour consulter le tarif de vente, vérifier le stock et
               générer un devis.
             </p>
             <a

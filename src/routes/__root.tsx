@@ -80,7 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Center 3D — Matériel agricole, vente et location" },
+      { title: "Center 3D — Matériel agricole importé" },
       {
         name: "description",
         content:

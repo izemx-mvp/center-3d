@@ -41,8 +41,8 @@ const values = [
   },
   {
     icon: Handshake,
-    title: "Flexibilité achat / location",
-    text: "Des formules adaptées à chaque exploitation : investissement long terme ou location de campagne.",
+    title: "Conseil à l'achat",
+    text: "Un accompagnement adapté à chaque exploitation pour un investissement durable et maîtrisé.",
   },
 ];
 
@@ -84,7 +84,7 @@ function About() {
           />
           <p className="mt-6 max-w-2xl leading-relaxed text-muted-foreground">
             Cette organisation internationale nous permet de proposer un matériel homogène et
-            documenté, avec des modalités d'achat ou de location adaptées à la réalité des
+            documenté, avec des modalités d'achat adaptées à la réalité des
             campagnes agricoles marocaines.
           </p>
           <Link to="/catalogue" className={buttonClass("primary", "md", "mt-8")}>

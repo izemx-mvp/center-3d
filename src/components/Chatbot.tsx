@@ -12,13 +12,13 @@ interface Msg {
 
 const QUICK = [
   "Quelles catégories de matériel ?",
-  "Achat ou location ?",
+  "Acheter une machine ?",
   "Comment voir les prix ?",
   "Quels délais de livraison ?",
 ];
 
 const WELCOME =
-  "Bonjour et bienvenue chez Center 3D ! 👋 Je suis votre assistant : je peux vous renseigner sur les catégories de matériel, la différence entre achat et location, l'accès à l'espace client, les délais de livraison et les zones couvertes. Que souhaitez-vous savoir ?";
+  "Bonjour et bienvenue chez Center 3D ! 👋 Je suis votre assistant : je peux vous renseigner sur les catégories de matériel, l'achat d'une machine, l'accès à l'espace client, les délais de livraison et les zones couvertes. Que souhaitez-vous savoir ?";
 
 const FALLBACK =
   "Je n'ai pas bien compris, mais voici ce que je peux vous aider à trouver :";
@@ -40,9 +40,9 @@ const RULES: { keys: string[]; answer: string }[] = [
       "Nous proposons 7 familles de matériel : tracteurs, moissonneuses, semoirs, pulvérisateurs, chargeuses, presses à balles et systèmes d'irrigation. Le catalogue public présente les caractéristiques techniques ; les tarifs sont réservés à l'espace client.",
   },
   {
-    keys: ["location", "louer", "achat", "acheter", "différence", "difference"],
+    keys: ["achat", "acheter", "vente", "commande", "commander"],
     answer:
-      "Chaque machine est proposée à l'achat, à la location, ou les deux. L'achat convient aux besoins permanents ; la location est idéale pour les pics de campagne (moisson, semis) avec une durée modulable. La modalité est indiquée sur chaque fiche machine.",
+      "Center 3D vend du matériel agricole neuf importé de constructeurs internationaux. Chaque machine est proposée à la vente uniquement — nous ne faisons pas de location. Pour un devis, connectez-vous à votre espace client ou contactez nos équipes via la page Contact.",
   },
   {
     keys: ["prix", "tarif", "devis", "coût", "cout", "espace client", "connect", "compte"],
