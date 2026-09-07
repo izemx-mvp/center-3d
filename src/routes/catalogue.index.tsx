@@ -14,23 +14,22 @@ import { Button, Reveal } from "@/components/ui-kit";
 import { cn } from "@/lib/utils";
 
 interface Search {
-  categorie: CategorySlug | undefined;
-  ville: string | undefined;
-  dispo: Availability | undefined;
+  categorie?: CategorySlug;
+  ville?: string;
+  dispo?: Availability;
 }
 
 export const Route = createFileRoute("/catalogue/")({
-  validateSearch: (search: Record<string, unknown>): Search => ({
-    categorie: CATEGORIES.some((c) => c.slug === search["categorie"])
-      ? (search["categorie"] as CategorySlug)
-      : undefined,
-    ville: CITIES.includes(search["ville"] as (typeof CITIES)[number])
-      ? (search["ville"] as string)
-      : undefined,
-    dispo: AVAILABILITIES.includes(search["dispo"] as Availability)
-      ? (search["dispo"] as Availability)
-      : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): Search => {
+    const out: Search = {};
+    if (CATEGORIES.some((c) => c.slug === search["categorie"]))
+      out.categorie = search["categorie"] as CategorySlug;
+    if (CITIES.includes(search["ville"] as (typeof CITIES)[number]))
+      out.ville = search["ville"] as string;
+    if (AVAILABILITIES.includes(search["dispo"] as Availability))
+      out.dispo = search["dispo"] as Availability;
+    return out;
+  },
   head: () => ({
     meta: [
       { title: "Catalogue matériel agricole — Center 3D" },
@@ -54,7 +53,7 @@ function Catalogue() {
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const setFilter = (patch: Partial<Search>) =>
+  const setFilter = (patch: Record<string, unknown>) =>
     navigate({
       to: "/catalogue",
       search: ((prev: Search) => ({ ...prev, ...patch })) as never,
