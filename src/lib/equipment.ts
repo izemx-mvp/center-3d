@@ -157,7 +157,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "7 400 kg",
     year: 2024,
     usage: "Grandes cultures, travail du sol profond",
-    mode: "Achat et location",
     summary:
       "Tracteur polyvalent à transmission continue, cabine suspendue et hydraulique renforcée pour les chantiers intensifs.",
     featured: true,
@@ -175,7 +174,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "9 100 kg",
     year: 2025,
     usage: "Traction lourde, semis grande largeur",
-    mode: "Achat",
     summary:
       "Tracteur de forte puissance équipé du guidage GPS intégré et d'un pont avant suspendu pour un confort de conduite optimal.",
     featured: true,
@@ -193,7 +191,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "6 200 kg",
     year: 2023,
     usage: "Arboriculture, maraîchage, exploitations mixtes",
-    mode: "Achat et location",
     summary:
       "Format compact et grande maniabilité, idéal pour les parcelles étroites et les travaux d'entretien.",
   },
@@ -210,7 +207,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "8 600 kg",
     year: 2025,
     usage: "Labour, transport lourd",
-    mode: "Achat",
     summary:
       "Motorisation sobre et transmission intelligente TerraDrive pour réduire la consommation sur longues journées de chantier.",
   },
@@ -227,7 +223,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "16 800 kg",
     year: 2024,
     usage: "Céréales, colza, tournesol",
-    mode: "Achat et location",
     summary:
       "Moissonneuse-batteuse hybride à haut débit avec coupe 9 m et système de séparation rotatif.",
     featured: true,
@@ -245,7 +240,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "14 200 kg",
     year: 2023,
     usage: "Céréales, légumineuses",
-    mode: "Location",
     summary:
       "Machine fiable et économique, conçue pour les campagnes de moisson intensives en climat chaud.",
   },
@@ -262,7 +256,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "12 900 kg",
     year: 2022,
     usage: "Exploitations moyennes",
-    mode: "Achat",
     summary:
       "Moissonneuse à secoueurs, simple d'entretien, avec broyeur de paille intégré.",
   },
@@ -279,7 +272,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "3 800 kg",
     year: 2024,
     usage: "Semis céréales et couverts végétaux",
-    mode: "Achat et location",
     summary:
       "Semoir pneumatique porté à distribution électrique, modulation de dose parcelle par parcelle.",
     featured: true,
@@ -297,7 +289,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "5 100 kg",
     year: 2025,
     usage: "Semis direct et techniques culturales simplifiées",
-    mode: "Achat",
     summary:
       "Semoir de précision traîné avec contrôle individuel des rangs et coupure de sections automatique.",
   },
@@ -314,7 +305,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "2 300 kg",
     year: 2023,
     usage: "Petites et moyennes surfaces",
-    mode: "Location",
     summary: "Semoir mécanique robuste, réglage simple et entretien réduit.",
   },
   {
@@ -330,7 +320,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "4 100 kg",
     year: 2024,
     usage: "Traitements phytosanitaires grandes cultures",
-    mode: "Achat et location",
     summary:
       "Pulvérisateur traîné avec rampe stabilisée, rinçage automatique et coupure GPS par tronçons.",
     featured: true,
@@ -348,7 +337,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "3 200 kg",
     year: 2023,
     usage: "Arboriculture et cultures maraîchères",
-    mode: "Location",
     summary:
       "Assistance d'air pour une pénétration homogène du produit et une dérive réduite.",
   },
@@ -365,7 +353,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "10 400 kg",
     year: 2025,
     usage: "Très grandes surfaces, débit de chantier élevé",
-    mode: "Achat",
     summary:
       "Pulvérisateur automoteur à garde au sol variable et pilotage numérique complet de la rampe.",
   },
@@ -382,7 +369,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "6 900 kg",
     year: 2024,
     usage: "Manutention de fourrage, silos, chargement de bennes",
-    mode: "Achat et location",
     summary:
       "Chargeuse télescopique compacte, très maniable dans les bâtiments d'élevage.",
   },
@@ -399,7 +385,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "5 200 kg",
     year: 2023,
     usage: "Cours de ferme, coopératives",
-    mode: "Location",
     summary: "Chargeuse frontale polyvalente avec attache rapide et godet multi-usages.",
   },
   {
@@ -415,7 +400,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "9 600 kg",
     year: 2024,
     usage: "Manutention lourde et logistique agricole",
-    mode: "Achat",
     summary: "Télescopique de forte capacité avec stabilisateurs et cabine climatisée.",
   },
   {
@@ -431,7 +415,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "3 600 kg",
     year: 2024,
     usage: "Paille, foin, enrubannage",
-    mode: "Achat et location",
     summary:
       "Presse à chambre variable avec liage filet rapide et rotor de coupe 15 couteaux.",
     featured: true,
@@ -449,7 +432,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "2 700 kg",
     year: 2022,
     usage: "Exploitations de taille moyenne",
-    mode: "Location",
     summary: "Presse compacte à chambre fixe, entretien simple et coût d'usage maîtrisé.",
   },
   {
@@ -465,7 +447,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "9 800 kg",
     year: 2025,
     usage: "Chantiers d'entreprise, très gros volumes",
-    mode: "Achat",
     summary:
       "Presse haute densité pour balles cubiques, densité de pressage pilotée électroniquement.",
   },
@@ -482,7 +463,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "12 000 kg",
     year: 2024,
     usage: "Irrigation de grandes parcelles céréalières",
-    mode: "Achat",
     summary:
       "Pivot d'irrigation galvanisé à pilotage à distance et gestion précise des doses d'eau.",
     featured: true,
@@ -500,7 +480,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "7 300 kg",
     year: 2023,
     usage: "Maraîchage et cultures fourragères",
-    mode: "Achat et location",
     summary: "Rampe frontale économe en eau, montage rapide et maintenance réduite.",
   },
   {
@@ -516,7 +495,6 @@ export const EQUIPMENTS: Equipment[] = [
     weight: "19 500 kg",
     year: 2025,
     usage: "Très grandes exploitations irriguées",
-    mode: "Achat",
     summary:
       "Pivot longue portée avec sondes d'humidité connectées et programmation par secteur.",
   },
