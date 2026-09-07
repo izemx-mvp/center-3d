@@ -37,7 +37,7 @@ export const Route = createFileRoute("/catalogue/$id")({
 
 function Detail() {
   const { item } = Route.useLoaderData();
-  const gallery = [categoryImage(item.category), heroImage, categoryImage(item.category)];
+  const gallery = equipmentGallery(item);
   const [active, setActive] = useState(0);
   const [sent, setSent] = useState(false);
 
