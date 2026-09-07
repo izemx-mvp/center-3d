@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Lock, MapPin } from "lucide-react";
-import { categoryImage, categoryLabel, type Equipment } from "@/lib/equipment";
+import { categoryLabel, equipmentImage, type Equipment } from "@/lib/equipment";
 import { AvailabilityBadge, buttonClass } from "@/components/ui-kit";
 
 export function EquipmentCard({ item }: { item: Equipment }) {
@@ -8,7 +8,7 @@ export function EquipmentCard({ item }: { item: Equipment }) {
     <article className="surface-card group flex flex-col overflow-hidden rounded-2xl">
       <div className="relative aspect-4/3 overflow-hidden bg-muted">
         <img
-          src={categoryImage(item.category)}
+          src={equipmentImage(item)}
           alt={`${item.brand} ${item.name}`}
           loading="lazy"
           width={1024}

@@ -2,11 +2,10 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, CheckCircle2, Info, Lock, MapPin } from "lucide-react";
 import { useState } from "react";
 import {
-  categoryImage,
   categoryLabel,
+  equipmentGallery,
   EQUIPMENTS,
   ESPACE_CLIENT_URL,
-  heroImage,
 } from "@/lib/equipment";
 import { EquipmentCard } from "@/components/EquipmentCard";
 import { AvailabilityBadge, Button, buttonClass, Reveal } from "@/components/ui-kit";
@@ -38,7 +37,7 @@ export const Route = createFileRoute("/catalogue/$id")({
 
 function Detail() {
   const { item } = Route.useLoaderData();
-  const gallery = [categoryImage(item.category), heroImage, categoryImage(item.category)];
+  const gallery = equipmentGallery(item);
   const [active, setActive] = useState(0);
   const [sent, setSent] = useState(false);
 

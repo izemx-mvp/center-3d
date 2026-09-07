@@ -13,10 +13,21 @@ import { EquipmentCard } from "@/components/EquipmentCard";
 import { Button, Reveal } from "@/components/ui-kit";
 import { cn } from "@/lib/utils";
 
+const SORTS = [
+  { value: "pertinence", label: "Pertinence" },
+  { value: "recent", label: "Les plus récentes" },
+  { value: "ancien", label: "Les plus anciennes" },
+  { value: "az", label: "Nom (A → Z)" },
+  { value: "prix", label: "Prix (espace client)" },
+] as const;
+
+type Sort = (typeof SORTS)[number]["value"];
+
 interface Search {
   categorie?: CategorySlug;
   ville?: string;
   dispo?: Availability;
+  tri?: Sort;
 }
 
 export const Route = createFileRoute("/catalogue/")({
@@ -28,6 +39,7 @@ export const Route = createFileRoute("/catalogue/")({
       out.ville = search["ville"] as string;
     if (AVAILABILITIES.includes(search["dispo"] as Availability))
       out.dispo = search["dispo"] as Availability;
+    if (SORTS.some((s) => s.value === search["tri"])) out.tri = search["tri"] as Sort;
     return out;
   },
   head: () => ({
@@ -59,16 +71,26 @@ function Catalogue() {
       search: ((prev: Search) => ({ ...prev, ...patch })) as never,
     });
 
-  const items = useMemo(
-    () =>
-      EQUIPMENTS.filter(
-        (e) =>
-          (!search.categorie || e.category === search.categorie) &&
-          (!search.ville || e.city === search.ville) &&
-          (!search.dispo || e.availability === search.dispo),
-      ),
-    [search],
-  );
+  const items = useMemo(() => {
+    const list = EQUIPMENTS.filter(
+      (e) =>
+        (!search.categorie || e.category === search.categorie) &&
+        (!search.ville || e.city === search.ville) &&
+        (!search.dispo || e.availability === search.dispo),
+    );
+    const tri = search.tri ?? "pertinence";
+    if (tri === "recent") return [...list].sort((a, b) => b.year - a.year);
+    if (tri === "ancien") return [...list].sort((a, b) => a.year - b.year);
+    if (tri === "az")
+      return [...list].sort((a, b) =>
+        `${a.brand} ${a.name}`.localeCompare(`${b.brand} ${b.name}`, "fr"),
+      );
+    if (tri === "prix")
+      return [...list].sort(
+        (a, b) => Number(b.availability === "Disponible") - Number(a.availability === "Disponible"),
+      );
+    return list;
+  }, [search]);
 
   const chips = [
     search.categorie && {
@@ -186,7 +208,28 @@ function Catalogue() {
               <span className="font-semibold text-graphite">{items.length}</span> machine
               {items.length > 1 ? "s" : ""} correspondant à votre recherche
             </p>
+            <label className="ml-auto flex items-center gap-2 text-sm text-muted-foreground">
+              <span className="hidden sm:inline">Trier par</span>
+              <select
+                value={search.tri ?? "pertinence"}
+                onChange={(e) => setFilter({ tri: e.target.value })}
+                className="h-10 rounded-xl border border-input bg-card px-3 text-sm text-graphite outline-none transition-colors focus:border-primary"
+              >
+                {SORTS.map((s) => (
+                  <option key={s.value} value={s.value}>
+                    {s.label}
+                  </option>
+                ))}
+              </select>
+            </label>
           </div>
+
+          {search.tri === "prix" && (
+            <p className="mb-6 rounded-xl bg-secondary/70 px-4 py-3 text-xs font-medium text-primary-deep">
+              Les tarifs restent réservés à l'espace client : les machines disponibles sont
+              affichées en premier, le classement par prix se fait après connexion.
+            </p>
+          )}
 
           {chips.length > 0 && (
             <div className="mb-6 flex flex-wrap items-center gap-2">
@@ -203,7 +246,12 @@ function Catalogue() {
                 onClick={() =>
                   navigate({
                     to: "/catalogue",
-                    search: { categorie: undefined, ville: undefined, dispo: undefined } as never,
+                    search: {
+                      categorie: undefined,
+                      ville: undefined,
+                      dispo: undefined,
+                      tri: search.tri,
+                    } as never,
                   })
                 }
                 className="text-xs font-medium text-muted-foreground underline-offset-4 hover:underline"
