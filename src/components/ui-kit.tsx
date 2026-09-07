@@ -141,6 +141,11 @@ export function Reveal({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setVisible(true);
+      return;
+    }
     const obs = new IntersectionObserver(
       (entries) => {
         if (entries[0]?.isIntersecting) {
@@ -148,11 +153,12 @@ export function Reveal({
           obs.disconnect();
         }
       },
-      { threshold: 0.12 },
+      { threshold: 0, rootMargin: "0px 0px -8% 0px" },
     );
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
+
 
   return (
     <div
