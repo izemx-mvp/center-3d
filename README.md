@@ -4,7 +4,7 @@ Build a full multi-page public marketing/institutional website (not a single-pag
 
 IMPORTANT SCOPE NOTE
 
-This is the PUBLIC marketing site only. Center 3D already has a separate "Espace Client" application (login, full catalogue with prices, order/quote/invoice management, AI assistant) hosted at a different URL, and a separate "Espace Commercial" admin platform. Do NOT build any login system, user dashboard, prices-visible catalogue, or account management — the "Se connecter" button on this site must be a plain external link to https://agrimach.izemxlab.com/login/client, opening that separate app. This site's own catalogue is public and must NEVER show prices. Someone clicking "Se connecter" and landing in the real Espace Client should feel visual continuity with this site, not a jarring style change — so the design system, data, and imagery conventions below matter.
+This is the PUBLIC marketing site only. Center 3D already has a separate "Espace Client" application (login, full catalogue with prices, order/quote/invoice management, AI assistant) hosted at a different URL, and a separate "Espace Commercial" admin platform. Do NOT build any login system, user dashboard, prices-visible catalogue, or account management — the "Se connecter" button on this site must be a plain external link to https://center-3d-bo.izemxlab.com/login/client, opening that separate app. This site's own catalogue is public and must NEVER show prices. Someone clicking "Se connecter" and landing in the real Espace Client should feel visual continuity with this site, not a jarring style change — so the design system, data, and imagery conventions below matter.
 
 BRAND IDENTITY
 
@@ -62,7 +62,7 @@ SITE STRUCTURE — separate routed pages, shared Navbar + Footer
 
 - International presence section/strip: brief visual nod to London HQ + Rabat/Tanger/Fès/Agadir teams
 
-- CTA band: "Consultez notre catalogue complet" + "Connectez-vous à votre espace client pour voir les tarifs et gérer vos commandes" linking externally to https://agrimach.izemxlab.com/login/client
+- CTA band: "Consultez notre catalogue complet" + "Connectez-vous à votre espace client pour voir les tarifs et gérer vos commandes" linking externally to https://center-3d-bo.izemxlab.com/login/client
 
 2. CATALOGUE PUBLIC (/catalogue)
 
@@ -82,7 +82,7 @@ SITE STRUCTURE — separate routed pages, shared Navbar + Footer
 
 - Name, brand, category, full technical specifications table (puissance, capacité, dimensions, poids, année, utilisation recommandée), localisation, disponibilité badge
 
-- NO price shown. Clear callout instead: "Tarifs et disponibilité en temps réel visibles dans votre espace client" with external link button to https://agrimach.izemxlab.com/login/client
+- NO price shown. Clear callout instead: "Tarifs et disponibilité en temps réel visibles dans votre espace client" with external link button to https://center-3d-bo.izemxlab.com/login/client
 
 - Secondary CTA: "Demander plus d'informations" (static form, see behavior below)
 
@@ -108,7 +108,7 @@ NAVBAR (all pages)
 
 - Logo placeholder, links: Accueil, Catalogue, À propos, Contact
 
-- "Se connecter" button — plain external link (not an internal route) to https://agrimach.izemxlab.com/login/client, styled as the primary CTA
+- "Se connecter" button — plain external link (not an internal route) to https://center-3d-bo.izemxlab.com/login/client, styled as the primary CTA
 
 FOOTER (all pages)
 

@@ -507,7 +507,7 @@ export const EQUIPMENTS: Equipment[] = [
   },
 ];
 
-export const ESPACE_CLIENT_URL = "https://agrimach.izemxlab.com/login/client";
+export const ESPACE_CLIENT_URL = "https://center-3d-bo.izemxlab.com/login/client";
 
 export const availabilityStyles: Record<Availability, { dot: string; badge: string }> = {
   Disponible: {
